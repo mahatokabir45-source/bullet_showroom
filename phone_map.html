@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bullet Showroom</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+}
+
+/* NAV */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#ff4d00;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:25px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:70px;
+}
+
+.hero p{
+    font-size:20px;
+    color:#ddd;
+    margin:10px 0 25px;
+}
+
+.btn{
+    padding:12px 30px;
+    background:#ff4d00;
+    color:white;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+/* SECTION TITLE */
+.section-title{
+    text-align:center;
+    font-size:40px;
+    margin:80px 0 40px;
+}
+
+/* BIKE GRID */
+.bike-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:0 8%;
+}
+
+.card{
+    background:#181818;
+    border-radius:15px;
+    overflow:hidden;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(255,77,0,0.25);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#bbb;
+    font-size:14px;
+}
+
+.price{
+    margin-top:10px;
+    color:#ff4d00;
+    font-weight:bold;
+}
+
+/* FEATURES */
+.features{
+    padding:80px 8%;
+    background:#151515;
+    margin-top:80px;
+    text-align:center;
+}
+
+/* CTA BOOKING */
+.cta{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.cta input,
+.cta select{
+    width:300px;
+    max-width:90%;
+    padding:12px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    background:#222;
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+    margin-top:50px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<nav>
+    <div class="logo">BULLET SHOWROOM</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Bikes</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div>
+        <h1>Ride The Legend</h1>
+        <p>Power. Style. Heritage.</p>
+        <a class="btn" href="#bikes">Explore Bikes</a>
+    </div>
+</section>
+
+<!-- BIKES -->
+<h2 class="section-title" id="bikes">Featured Bikes</h2>
+
+<div class="bike-grid">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80">
+        <div class="card-content">
+            <h3>Bullet 350</h3>
+            <p>Classic heavy-road motorcycle.</p>
+            <div class="price">₹1.75 Lakh</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/new-classic-350/studio-shots/stealth-black/stealth-black-000.png">
+        <div class="card-content">
+            <h3>Classic 350</h3>
+            <p>Iconic retro comfort bike.</p>
+            <div class="price">₹2.05 Lakh</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK1AedfStfQWNTXvfJNzO9pMZ6FrwPoSCwuw&s">
+        <div class="card-content">
+            <h3>Hunter 350</h3>
+            <p>City sporty motorcycle.</p>
+            <div class="price">₹1.90 Lakh</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="https://www.royalenfield.com/content/dam/royal-enfield/usa/motorcycles/meteor/colours/studio-shots/matte-black/01-black.png">
+        <div class="card-content">
+            <h3>Meteor 350</h3>
+            <p>Comfort long ride bike.</p>
+            <div class="price">₹2.20 Lakh</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- FEATURES -->
+<section class="features">
+    <h2 class="section-title">Why Choose Us?</h2>
+    <p>Genuine Bikes • Best Price • Free Test Ride • Service Support</p>
+</section>
+
+<!-- BOOKING -->
+<section class="cta">
+
+<h2 class="section-title">Book Test Ride</h2>
+
+<input type="text" id="name" placeholder="Name">
+<br>
+<input type="text" id="phone" placeholder="Phone">
+<br>
+
+<select id="bike">
+    <option>Bullet 350</option>
+    <option>Classic 350</option>
+    <option>Hunter 350</option>
+    <option>Meteor 350</option>
+</select>
+
+<br>
+
+<button class="btn" onclick="bookRide()">Book Now</button>
+
+<p id="msg" style="margin-top:20px;color:#ff4d00;"></p>
+
+</section>
+
+<footer>
+© 2026 Bullet Showroom
+</footer>
+
+<script>
+async function bookRide(){
+
+    const res = await fetch("/book",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            name:document.getElementById("name").value,
+            phone:document.getElementById("phone").value,
+            bike:document.getElementById("bike").value
+        })
+    });
+
+    const data = await res.json();
+
+    document.getElementById("msg").innerText =
+        data.message;
+}
+</script>
+
+</body>
+</html>
