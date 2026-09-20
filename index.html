@@ -1,304 +1,614 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bullet Showroom</title>
+<title>For My Favorite Person ❤️</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+    font-family:"Poppins",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-    background:#0f0f0f;
+    background:#09000d;
     color:white;
+    overflow-x:hidden;
 }
 
-/* NAV */
-header{
+/* BACKGROUND */
+body::before{
+    content:"";
     position:fixed;
-    top:0;
-    width:100%;
-    padding:20px 8%;
-    background:rgba(0,0,0,0.85);
-    backdrop-filter:blur(10px);
-    z-index:1000;
+    width:500px;
+    height:500px;
+    background:#ff197a;
+    filter:blur(180px);
+    opacity:.25;
+    top:-150px;
+    left:-150px;
+    z-index:-2;
 }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#7b2cff;
+    filter:blur(180px);
+    opacity:.2;
+    bottom:-150px;
+    right:-150px;
+    z-index:-2;
 }
 
-.logo{
-    font-size:28px;
-    font-weight:bold;
-    color:#ff4d00;
+/* FLOATING HEARTS */
+.heart{
+    position:fixed;
+    bottom:-30px;
+    color:#ff4d91;
+    font-size:20px;
+    animation:float 7s linear infinite;
+    opacity:.7;
+    z-index:-1;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
-}
-
-nav ul li{
-    margin-left:25px;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    15%{opacity:1;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
 }
 
 /* HERO */
 .hero{
-    height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
-    url('https://images.unsplash.com/photo-1558981285-6f0c94958bb6?auto=format&fit=crop&w=1600&q=80');
-    background-size:cover;
-    background-position:center;
+    min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
+    padding:30px;
 }
 
-.hero h1{
-    font-size:70px;
+.hero-content{
+    max-width:850px;
+}
+
+.small{
+    letter-spacing:5px;
+    text-transform:uppercase;
+    color:#ff8fbd;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-size:clamp(45px,9vw,95px);
+    line-height:1;
+    background:linear-gradient(90deg,#fff,#ff70a9,#dca7ff,#fff);
+    background-size:300%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradient 5s infinite;
+}
+
+@keyframes gradient{
+    0%{background-position:0%;}
+    50%{background-position:100%;}
+    100%{background-position:0%;}
 }
 
 .hero p{
-    font-size:20px;
-    color:#ddd;
-    margin:10px 0 25px;
+    margin:25px auto;
+    max-width:600px;
+    color:#d9c8d8;
+    line-height:1.8;
+    font-size:17px;
 }
 
-.btn{
-    padding:12px 30px;
-    background:#ff4d00;
+.scroll{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    border:1px solid #ff4d91;
+    border-radius:50px;
     color:white;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
     text-decoration:none;
+    box-shadow:0 0 25px #ff197a44;
+    transition:.3s;
 }
 
-/* SECTION TITLE */
-.section-title{
+.scroll:hover{
+    background:#ff197a;
+    transform:translateY(-4px);
+}
+
+/* SECTION */
+section{
+    padding:100px 20px;
     text-align:center;
+}
+
+.section-title{
     font-size:40px;
-    margin:80px 0 40px;
+    margin-bottom:15px;
 }
 
-/* BIKE GRID */
-.bike-grid{
+.section-sub{
+    color:#a999a9;
+    margin-bottom:50px;
+}
+
+/* LOVE CARD */
+.love-card{
+    max-width:800px;
+    margin:auto;
+    padding:50px;
+    border:1px solid #ffffff18;
+    border-radius:30px;
+    background:#ffffff08;
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 80px #000;
+}
+
+.love-card .quote{
+    font-size:28px;
+    line-height:1.6;
+    color:#ffd5e6;
+}
+
+.signature{
+    margin-top:30px;
+    color:#ff77aa;
+    font-style:italic;
+}
+
+/* MEMORY CARDS */
+.memories{
+    max-width:1000px;
+    margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    padding:0 8%;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:20px;
 }
 
-.card{
-    background:#181818;
-    border-radius:15px;
-    overflow:hidden;
-    transition:0.3s;
+.memory{
+    padding:35px 25px;
+    background:linear-gradient(145deg,#ffffff0c,#ffffff03);
+    border:1px solid #ffffff12;
+    border-radius:25px;
+    transition:.4s;
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 10px 25px rgba(255,77,0,0.25);
+.memory:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:#ff4d9166;
+    box-shadow:0 15px 50px #ff197a22;
 }
 
-.card img{
-    width:100%;
-    height:200px;
-    object-fit:cover;
+.memory .icon{
+    font-size:45px;
+    margin-bottom:20px;
 }
 
-.card-content{
-    padding:15px;
+.memory h3{
+    margin-bottom:10px;
 }
 
-.card-content h3{
-    margin-bottom:8px;
+.memory p{
+    color:#aaa;
+    line-height:1.7;
 }
 
-.card-content p{
-    color:#bbb;
-    font-size:14px;
+/* COUNTER */
+.counter{
+    margin:40px auto;
+    max-width:700px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-.price{
-    margin-top:10px;
-    color:#ff4d00;
+.counter-box{
+    padding:25px 10px;
+    background:#ffffff08;
+    border:1px solid #ffffff12;
+    border-radius:20px;
+}
+
+.counter-box span{
+    display:block;
+    font-size:30px;
+    color:#ff70a9;
     font-weight:bold;
 }
 
-/* FEATURES */
-.features{
-    padding:80px 8%;
-    background:#151515;
-    margin-top:80px;
-    text-align:center;
+.counter-box small{
+    color:#999;
 }
 
-/* CTA BOOKING */
-.cta{
-    padding:80px 8%;
-    text-align:center;
-}
-
-.cta input,
-.cta select{
-    width:300px;
-    max-width:90%;
-    padding:12px;
-    margin:10px;
+/* BUTTON */
+.magic{
+    margin-top:35px;
     border:none;
-    border-radius:8px;
-    background:#222;
+    padding:17px 35px;
+    border-radius:50px;
+    background:linear-gradient(90deg,#ff197a,#a63cff);
     color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 10px 40px #ff197a55;
+    transition:.3s;
+}
+
+.magic:hover{
+    transform:scale(1.07);
+    box-shadow:0 10px 60px #ff197a88;
+}
+
+/* SURPRISE */
+#surprise{
+    display:none;
+    margin:40px auto 0;
+    max-width:700px;
+    padding:40px;
+    border-radius:30px;
+    background:#ff197a0d;
+    border:1px solid #ff4d9144;
+}
+
+#surprise h2{
+    color:#ff76aa;
+    margin-bottom:15px;
+}
+
+#surprise p{
+    color:#ddd;
+    line-height:1.8;
 }
 
 /* FOOTER */
 footer{
+    padding:50px 20px;
     text-align:center;
-    padding:20px;
-    background:black;
-    margin-top:50px;
+    color:#766976;
+    border-top:1px solid #ffffff0b;
+}
+
+footer span{
+    color:#ff4d91;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .love-card{
+        padding:30px 20px;
+    }
+
+    .love-card .quote{
+        font-size:21px;
+    }
+
+    .counter{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:75px 18px;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<header>
-<nav>
-    <div class="logo">BULLET SHOWROOM</div>
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Bikes</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
-</header>
+<!-- FLOATING HEARTS -->
+<div class="heart" style="left:5%;animation-delay:0s;">❤</div>
+<div class="heart" style="left:15%;animation-delay:2s;">♡</div>
+<div class="heart" style="left:28%;animation-delay:4s;">❤</div>
+<div class="heart" style="left:42%;animation-delay:1s;">♡</div>
+<div class="heart" style="left:58%;animation-delay:3s;">❤</div>
+<div class="heart" style="left:72%;animation-delay:5s;">♡</div>
+<div class="heart" style="left:88%;animation-delay:2s;">❤</div>
 
 <!-- HERO -->
 <section class="hero">
-    <div>
-        <h1>Ride The Legend</h1>
-        <p>Power. Style. Heritage.</p>
-        <a class="btn" href="#bikes">Explore Bikes</a>
-    </div>
-</section>
 
-<!-- BIKES -->
-<h2 class="section-title" id="bikes">Featured Bikes</h2>
+<div class="hero-content">
 
-<div class="bike-grid">
+<div class="small">A little corner of the internet...</div>
 
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80">
-        <div class="card-content">
-            <h3>Bullet 350</h3>
-            <p>Classic heavy-road motorcycle.</p>
-            <div class="price">₹1.75 Lakh</div>
-        </div>
-    </div>
+<h1>Made Just<br>For You ❤️</h1>
 
-    <div class="card">
-        <img src="https://www.royalenfield.com/content/dam/royal-enfield/motorcycles/new-classic-350/studio-shots/stealth-black/stealth-black-000.png">
-        <div class="card-content">
-            <h3>Classic 350</h3>
-            <p>Iconic retro comfort bike.</p>
-            <div class="price">₹2.05 Lakh</div>
-        </div>
-    </div>
+<p>
+Some people enter our lives quietly...
+and somehow become the most beautiful part of them.
+This little page is for one of those people.
+</p>
 
-    <div class="card">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK1AedfStfQWNTXvfJNzO9pMZ6FrwPoSCwuw&s">
-        <div class="card-content">
-            <h3>Hunter 350</h3>
-            <p>City sporty motorcycle.</p>
-            <div class="price">₹1.90 Lakh</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <img src="https://www.royalenfield.com/content/dam/royal-enfield/usa/motorcycles/meteor/colours/studio-shots/matte-black/01-black.png">
-        <div class="card-content">
-            <h3>Meteor 350</h3>
-            <p>Comfort long ride bike.</p>
-            <div class="price">₹2.20 Lakh</div>
-        </div>
-    </div>
+<a href="#letter" class="scroll">Open My Heart ↓</a>
 
 </div>
 
-<!-- FEATURES -->
-<section class="features">
-    <h2 class="section-title">Why Choose Us?</h2>
-    <p>Genuine Bikes • Best Price • Free Test Ride • Service Support</p>
 </section>
 
-<!-- BOOKING -->
-<section class="cta">
 
-<h2 class="section-title">Book Test Ride</h2>
+<!-- LOVE LETTER -->
+<section id="letter">
 
-<input type="text" id="name" placeholder="Name">
-<br>
-<input type="text" id="phone" placeholder="Phone">
-<br>
+<div class="small">A letter from my heart</div>
 
-<select id="bike">
-    <option>Bullet 350</option>
-    <option>Classic 350</option>
-    <option>Hunter 350</option>
-    <option>Meteor 350</option>
-</select>
+<h2 class="section-title">To My Favorite Person 💌</h2>
 
-<br>
+<p class="section-sub">
+There are some things that are easier to feel than to say.
+</p>
 
-<button class="btn" onclick="bookRide()">Book Now</button>
+<div class="love-card">
 
-<p id="msg" style="margin-top:20px;color:#ff4d00;"></p>
+<div class="quote">
+"If I had to choose one person to talk to
+again and again, laugh with,
+annoy forever,
+and make beautiful memories with...
+
+I'd choose you.
+Every single time."
+</div>
+
+<div class="signature">
+— With all my heart ❤️
+</div>
+
+</div>
 
 </section>
+
+
+<!-- MEMORIES -->
+<section>
+
+<div class="small">Little things</div>
+
+<h2 class="section-title">Why You Are Special ✨</h2>
+
+<p class="section-sub">
+It's not just one thing. It's all the little things.
+</p>
+
+<div class="memories">
+
+<div class="memory">
+<div class="icon">🌸</div>
+<h3>Your Smile</h3>
+<p>
+Somehow your smile can make an ordinary moment
+feel like a beautiful memory.
+</p>
+</div>
+
+<div class="memory">
+<div class="icon">🌙</div>
+<h3>Your Presence</h3>
+<p>
+Even when we don't say much,
+having you around makes everything feel better.
+</p>
+</div>
+
+<div class="memory">
+<div class="icon">💗</div>
+<h3>Your Heart</h3>
+<p>
+The person you are is something
+I appreciate more than words can explain.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COUNTER -->
+<section>
+
+<div class="small">Our little universe</div>
+
+<h2 class="section-title">Every Moment Matters ⏳</h2>
+
+<p class="section-sub">
+Because the best memories are made one moment at a time.
+</p>
+
+<div class="counter">
+
+<div class="counter-box">
+<span id="days">0</span>
+<small>Days</small>
+</div>
+
+<div class="counter-box">
+<span id="hours">0</span>
+<small>Hours</small>
+</div>
+
+<div class="counter-box">
+<span id="minutes">0</span>
+<small>Minutes</small>
+</div>
+
+</div>
+
+<p style="color:#777;">
+Since the moment our story began ❤️
+</p>
+
+</section>
+
+
+<!-- FINAL SURPRISE -->
+<section>
+
+<div class="small">One last thing...</div>
+
+<h2 class="section-title">I Have A Secret 🤫</h2>
+
+<p class="section-sub">
+You have to press the button to find out.
+</p>
+
+<button class="magic" onclick="showSurprise()">
+✨ Open The Secret ✨
+</button>
+
+<div id="surprise">
+
+<h2>Hey You ❤️</h2>
+
+<p>
+If you're reading this, just remember one thing:
+
+You are not just another person in my life.
+You are someone whose presence became a beautiful
+part of my story.
+
+No fancy website, no amount of words,
+and no number of stars in the sky
+could properly explain how special you are.
+
+So here's my simple promise:
+
+I'll keep making memories with you,
+keep annoying you,
+keep making you smile,
+and keep choosing you
+in all the little moments that matter.
+
+<br><br>
+
+<strong>
+Thank you for being you. ❤️
+</strong>
+</p>
+
+</div>
+
+</section>
+
 
 <footer>
-© 2026 Bullet Showroom
+Made with <span>❤</span> for someone special.
 </footer>
 
-<script>
-async function bookRide(){
 
-    const res = await fetch("/book",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({
-            name:document.getElementById("name").value,
-            phone:document.getElementById("phone").value,
-            bike:document.getElementById("bike").value
-        })
+<script>
+
+/* CHANGE THIS DATE TO THE DATE YOUR STORY BEGAN */
+const startDate = new Date("2025-06-19T00:00:00");
+
+function updateCounter(){
+
+    const now = new Date();
+
+    const difference = now - startDate;
+
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+        difference / (1000 * 60 * 60)
+    ) % 24;
+
+    const minutes = Math.floor(
+        difference / (1000 * 60)
+    ) % 60;
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+}
+
+updateCounter();
+setInterval(updateCounter,60000);
+
+
+/* SURPRISE */
+function showSurprise(){
+
+    const box = document.getElementById("surprise");
+
+    box.style.display = "block";
+
+    box.scrollIntoView({
+        behavior:"smooth",
+        block:"center"
     });
 
-    const data = await res.json();
-
-    document.getElementById("msg").innerText =
-        data.message;
+    createHearts();
 }
+
+
+/* HEART EXPLOSION */
+function createHearts(){
+
+    for(let i=0;i<35;i++){
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = Math.random() > .5 ? "❤" : "♡";
+
+        heart.style.position="fixed";
+        heart.style.left="50%";
+        heart.style.top="50%";
+        heart.style.fontSize=(15+Math.random()*25)+"px";
+        heart.style.color="#ff4d91";
+        heart.style.pointerEvents="none";
+        heart.style.zIndex="9999";
+
+        document.body.appendChild(heart);
+
+        const x=(Math.random()-0.5)*700;
+        const y=(Math.random()-0.5)*700;
+
+        heart.animate([
+            {
+                transform:"translate(-50%,-50%) scale(0)",
+                opacity:1
+            },
+            {
+                transform:
+                `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1.5)`,
+                opacity:0
+            }
+        ],{
+            duration:1800,
+            easing:"cubic-bezier(.17,.67,.83,.67)"
+        });
+
+        setTimeout(()=>{
+            heart.remove();
+        },1800);
+    }
+}
+
 </script>
 
 </body>
 </html>
+```
